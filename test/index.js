@@ -16,17 +16,17 @@ describe('simple-amqplib-consumer', function () {
     consumeStub.reset();
   });
   it('works', async function () {
-    await consumer({}, async => {});
+    await consumer({ queue: {} }, async => {});
     expect(consumeStub.callCount).to.be.greaterThan(0);
     expect(typeof consumeStub.getCall(0).args[0]).to.equal('function');
   });
   it('works with array init', async function () {
-    await consumer({}, async => {}, { init: [Promise.resolve()] });
+    await consumer({ queue: {} }, async => {}, { init: [Promise.resolve()] });
     expect(consumeStub.callCount).to.be.greaterThan(0);
     expect(typeof consumeStub.getCall(0).args[0]).to.equal('function');
   });
   it('works with non array init', async function () {
-    await consumer({}, async => {}, { init: Promise.resolve() });
+    await consumer({ queue: {} }, async => {}, { init: Promise.resolve() });
     expect(consumeStub.callCount).to.be.greaterThan(0);
     expect(typeof consumeStub.getCall(0).args[0]).to.equal('function');
   });

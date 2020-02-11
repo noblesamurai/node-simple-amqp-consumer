@@ -9,6 +9,7 @@ async function main (amqpConfig, process, opts = {}) {
   // Wait for setup/init promises to resolve
   await Promise.all([...init, amqp.connect()]);
   amqp.consume(callbackify(process));
+  return amqp;
 }
 
 module.exports = main;
