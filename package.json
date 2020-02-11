@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "coverage": "nyc -a -c -r text -r lcov npm test",
+    "docs": "jsdoc2md src/index.js",
     "test": "npm run lint && mocha --recursive test",
     "lint": "semistandard"
   },
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "jsdoc-to-markdown": "^5.0.3",
     "mocha": "^7.0.0",
     "nyc": "^15.0.0",
     "proxyquire": "^2.1.3",

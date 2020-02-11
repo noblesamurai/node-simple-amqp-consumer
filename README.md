@@ -31,9 +31,10 @@ simpleAMQPConsumer(amqpConfig, processMessage, { init: db.migrate.latest() })
 
 | Param | Type | Description |
 | --- | --- | --- |
-| amqpConfig | <code>object</code> | Config passed to simple-amqplib. |
+| amqpConfig | <code>object</code> | Config passed to [simple-amqplib](https://github.com/noblesamurai/node-simple-amqplib). |
 | process | <code>function</code> | async function to process messages |
-| opts.init | <code>Array.&lt;Promise&gt;</code> \| <code>Promise</code> | These are waited for before consuming. |
+| opts.init | <code>Array.&lt;Promise&gt;</code> \| <code>Promise</code> | These are waited for before consuming. Use for e.g. DB connection to come up. |
+
 
 Note: To regenerate this section from the jsdoc run `npm run docs` and paste
 the output above.
