@@ -3,20 +3,38 @@
 > Consume messages using simple-amqp.
 
 ## Purpose
-- What problem does this module solve? At least a few sentences.
-PLEASE_FILL_IN_HERE
+Boilerplate to consumer messages using `simple-amqplib`.
 
 ## Usage
 
 ```js
-// Several examples of usage.
-// Usually copying and pasting code from the tests and making the code standalone suffices.
-// PLEASE_FILL_IN_HERE
+simpleAMQPConsumer(amqpConfig, processMessage, { init: db.migrate.latest() })
+  .then(amqp => {
+    process.once('SIGTERM', () => {
+      amqp.close();
+      db.close();
+    });
+    console.log(`Consuming on ${amqpConfig.queue.name}`);
+  }).catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 ```
 
 ## API
 
-PLEASE_FILL_IN_HERE
+<a name="main"></a>
+
+## main(amqpConfig, process) ⇒
+**Kind**: global function
+**Returns**: The simple-amqplib instance (so you can e.g. .close() it).
+
+| Param | Type | Description |
+| --- | --- | --- |
+| amqpConfig | <code>object</code> | Config passed to [simple-amqplib](https://github.com/noblesamurai/node-simple-amqplib). |
+| process | <code>function</code> | async function to process messages |
+| opts.init | <code>Array.&lt;Promise&gt;</code> \| <code>Promise</code> | These are waited for before consuming. Use for e.g. DB connection to come up. |
+
 
 Note: To regenerate this section from the jsdoc run `npm run docs` and paste
 the output above.
