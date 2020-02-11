@@ -3,7 +3,8 @@ const { callbackify } = require('util');
 
 async function main (amqpConfig, process, opts = {}) {
   const amqp = new AMQP(amqpConfig);
-  const { init = [] } = opts;
+  let { init = [] } = opts;
+  if (!Array.isArray(init)) init = [init];
 
   // Wait for setup/init promises to resolve
   await Promise.all([...init, amqp.connect()]);
